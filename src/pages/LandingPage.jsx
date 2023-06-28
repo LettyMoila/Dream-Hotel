@@ -19,7 +19,7 @@ const LandingPage = () =>{
             </section>
             <section>
               <Link to="/Register">Register</Link>
-            <button className='ml-6 w-16 rounded-lg bg-buttonBack'>Login</button>
+            <Link to="/Explore"><button className='ml-6 w-16 rounded-lg bg-buttonBack'>Login</button></Link>
             </section>
           </div>
 

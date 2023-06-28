@@ -12,6 +12,7 @@ export default {
       'unknown-color': '#E3D5D5',
       'colorPink': '#DC3CDF',
       'tcolor': '#A5A6F6',
+      'deep-blue':'#49C9E5',
     },
     extend: {},
   plugins: [],
