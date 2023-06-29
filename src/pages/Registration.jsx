@@ -25,7 +25,7 @@ const Registration = () =>{
                 </div>
 
                 <div className=''>
-                    <button className='text-colorPink bg-buttonBack rounded-2xl h-8 w-40'>Sign Up</button>
+                    <Link to="/Explore"><button className='text-colorPink bg-buttonBack rounded-2xl h-8 w-40'>Sign Up</button></Link>
                     <div className='columns-2'>
                     <h3>Already have an account?</h3>
                     <Link to="/ClientLogin" className='text-colorPink'>Login</Link>
