@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react';
 import binos from '../assets/Binoculars.png'
 
-const LandingPage = () =>{
+const LandingPage = () => {
+
+    const [showOptions, setShowOptions] = useState(false);
+  
+    const handleButtonClick = () => {
+      setShowOptions(!showOptions);
+    }
+
     return(
       <div className="wrapUp h-screen flex">
         <div className="Wrapper bg-[url('./assets/Hobby.png')] bg-no-repeat bg-cover w-1/2">
@@ -17,9 +25,18 @@ const LandingPage = () =>{
             <section>
             <button className='w-32 rounded-lg bg-buttonBack'>Get started</button>
             </section>
-            <section>
+            <section className='flex gap-6'>
               <Link to="/Register">Register</Link>
-            <Link to="/Explore"><button className='ml-6 w-16 rounded-lg bg-buttonBack'>Login</button></Link>
+              <div>
+                <button onClick={handleButtonClick} className='w-32 rounded-lg bg-buttonBack'>Sign In</button>
+                {showOptions && (
+                  <div className='flex gap-2'>
+                    <Link to="/ClientLogin"><button>client</button></Link>
+                    <>|</>
+                    <Link to="/AdminLogin"><button>admin</button></Link>
+                  </div>
+                )}
+              </div>
             </section>
           </div>
 
@@ -41,17 +58,37 @@ const LandingPage = () =>{
         
 
           <div className='w-11/12 h-64 m-6 bg-buttonBack grid grid-cols-2 gap-6 p-4 content-center'>
-            <section className='w-48 h-14 bg-unknown-color'>
-              <span className="material-symbols-outlined">calendar_month</span>
+            <section className='w-48 h-14 bg-unknown-color p-3'>
+            <input type="date" id="datepicker" name="datepicker" min="2023-01-01" max="2024-12-31" className='bg-unknown-color'/>
             </section>
             <section className='w-48 h-14 bg-unknown-color'>
               <span className="material-symbols-outlined">hotel</span>
+              <select id="roomT" name="rooms" className='bg-unknown-color'>
+                    <option value="Standard" selected>Standard</option>
+                    <option value="Deluxe">Deluxe</option>
+                    <option value="suite" >Suite</option>
+                    <option value="Apartment">Apartment</option>
+              </select>
             </section>
             <section className='w-48 h-14 bg-unknown-color'>
               <span className="material-symbols-outlined">people</span>
+              <select id="adultNo" name="adults" className='bg-unknown-color'>
+                    <option disabled selected value="">Adults</option>
+                    <option value="one">1</option>
+                    <option value="two">2</option>
+                    <option value="three">3</option>
+                    <option value="four">4</option>
+              </select>
             </section>
             <section className='w-48 h-14 bg-unknown-color'>
-            <span className="material-symbols-outlined">child_care</span>
+              <span className="material-symbols-outlined">child_care</span>
+              <select id="childNo" name="child" className='bg-unknown-color'>
+                                <option disabled selected value="">Child</option>
+                                <option value="one">1</option>
+                                <option value="two">2</option>
+                                <option value="three">3</option>
+                                <option value="four">4</option>
+                            </select>
             </section>
           </div>
         </div>
