@@ -23,7 +23,7 @@ const ClientLogin = () =>{
                 </div>
 
                 <div className=''>
-                    <Link to="/Explore" ><button className='text-tcolor bg-buttonBack rounded-2xl h-8 w-40'>Login</button></Link>
+                    <Link to="/Explore" ><button className='text-tcolor bg-buttonBack rounded-tl-2xl rounded-br-2xl drop-shadow-2xl h-8 w-40'>Login</button></Link>
                     <div className='columns-2'>
                         <h3>Don't have an account?</h3>
                         <Link to="/Register" className='text-tcolor'>Sign up</Link>

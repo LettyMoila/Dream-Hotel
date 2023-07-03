@@ -21,7 +21,7 @@ const LandingPage = () => {
         </div>
         
         <div className='w-1/2 bg-vintageColor'>
-          <div className='columns-2 p-3 flex gap-80'>
+          <div className='columns-2 p-3 flex justify-between'>
             <section>
             <button className='w-32 rounded-lg bg-buttonBack'>Get started</button>
             </section>
@@ -40,15 +40,15 @@ const LandingPage = () => {
             </section>
           </div>
 
-          <div className='h-96 m-6 mt-10 pt-26  tracking-widest '>
+          <div className='h-96 m-6 mt-10 pt-26  tracking-widest'>
             
-            <h1 className='pl-48 text-6xl'>DREAM <br/> HOTEL</h1>
+            <h1 className='pl-72 text-6xl'>DREAM <br/> HOTEL</h1>
             
             
             
-            <div className='h-40 m-6 flex'>
+            <div className='pl-28 h-40 m-6 flex'>
               <img src={binos}/>
-              <section className='mt-6'>
+              <section className='mt-6 pl-6'>
                 <h1 className='text-6xl'>abu Dhabi</h1>
                 <h2 className='text-xl'>United Arab Emirates</h2>
               </section>
@@ -58,21 +58,21 @@ const LandingPage = () => {
         
 
           <div className='w-11/12 h-64 m-6 bg-buttonBack grid grid-cols-2 gap-6 p-4 content-center'>
-            <section className='w-48 h-14 bg-unknown-color p-3'>
+            <section className='w-48 h-14 bg-unknown-color pt-3 pl-6'>
             <input type="date" id="datepicker" name="datepicker" min="2023-01-01" max="2024-12-31" className='bg-unknown-color'/>
             </section>
-            <section className='w-48 h-14 bg-unknown-color'>
-              <span className="material-symbols-outlined">hotel</span>
-              <select id="roomT" name="rooms" className='bg-unknown-color'>
+            <section className='w-48 h-14 bg-unknown-color pt-3 pl-6'>
+              <span className="material-symbols-outlined align-middle">hotel</span>
+              <select id="roomT" name="rooms" className='bg-unknown-color border-0'>
                     <option value="Standard" selected>Standard</option>
                     <option value="Deluxe">Deluxe</option>
                     <option value="suite" >Suite</option>
                     <option value="Apartment">Apartment</option>
               </select>
             </section>
-            <section className='w-48 h-14 bg-unknown-color'>
-              <span className="material-symbols-outlined">people</span>
-              <select id="adultNo" name="adults" className='bg-unknown-color'>
+            <section className='w-48 h-14 bg-unknown-color pt-3 pl-6'>
+              <span className="material-symbols-outlined align-middle">people</span>
+              <select id="adultNo" name="adults" className='bg-unknown-color border-0'>
                     <option disabled selected value="">Adults</option>
                     <option value="one">1</option>
                     <option value="two">2</option>
@@ -80,9 +80,9 @@ const LandingPage = () => {
                     <option value="four">4</option>
               </select>
             </section>
-            <section className='w-48 h-14 bg-unknown-color'>
-              <span className="material-symbols-outlined">child_care</span>
-              <select id="childNo" name="child" className='bg-unknown-color'>
+            <section className='w-48 h-14 bg-unknown-color pt-3 pl-6'>
+              <span className="material-symbols-outlined align-middle">child_care</span>
+              <select id="childNo" name="child" className='bg-unknown-color border-0'>
                                 <option disabled selected value="">Child</option>
                                 <option value="one">1</option>
                                 <option value="two">2</option>

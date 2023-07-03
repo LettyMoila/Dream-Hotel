@@ -39,7 +39,7 @@ const Booking = () =>{
                         </select>
                     </div>
 
-                    <div className='columns-2 flex flex gap-4'>
+                    <div className='columns-2 flex gap-4'>
                         <label>Number of Guests</label>
                         <div className='flex gap-4'>
                             <section>

@@ -9,6 +9,9 @@ import Explore from './pages/Explore';
 import Items from './pages/Items';
 import Registration from './pages/Registration';
 import Reserve from './pages/Reserve';
+import Requests from './pages/Requests';
+import Guests from './pages/Guests';
+import ManageRooms from './pages/ManageRooms';
 
 const App = () => {
   return (
@@ -23,8 +26,9 @@ const App = () => {
        <Route path="/Items" element={<Items />} />
        <Route path="/Register" element={<Registration />} />
        <Route path="/Reserve" element={<Reserve />} />
-
-
+       <Route path="/Requests" element={<Requests />} />
+       <Route path="/Guests" element={<Guests />} />
+       <Route path="/ManageRooms" element={<ManageRooms />} />
     </Routes>
    
   );
