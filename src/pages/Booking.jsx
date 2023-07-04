@@ -1,14 +1,39 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'reactjs-popup/dist/index.css';
 
-const Booking = () =>{
-    let handleClick = () => {
-        alert('Received! Dream hotel will contact you.');
-      }
+import { db } from '../config/firebase';
+import { addDoc, collection } from 'firebase/firestore';
+import {async} from '@firebase/util';
 
-      const componentDidMount = () => {
-        window.location.href = '/Explore'; // Navigate to the explore page when the page refreshes
-      }
+const Booking = () =>{
+    const [fullname, setNames] = useState('');
+    const [email, setEmail] = useState('');
+    const [roomType, setRoomType] = useState('');
+    const [numGuests, setNum] = useState('');
+    const [arrival, setArrival] = useState('');
+    const [depature, setDepature] = useState('');
+    const [pickup, setPickup] = useState('');
+    const [comments, setComments] = useState('');
+   
+    const add = (async()=>{
+        try{
+
+                const docRef = await addDoc(collection(db, 'booking'),{
+                fullname: fullname,
+                email: email,
+                roomType: roomType,
+                numGuests: numGuests,
+                arrival: arrival,
+                depature: depature,
+                pickup: pickup,
+                comments: comments,
+            });
+            alert('Received! Dream hotel will contact you.');
+        } catch(error) {
+
+        }
+})
 
     return(
         <div className="h-screen flex">
@@ -21,17 +46,17 @@ const Booking = () =>{
                 <form className="h-3/5 pl-28 grid gap-8">
                    <div className='columns-2 flex gap-4'>
                         <label>Fullname</label>
-                        <input type='text' className='bg-buttonBack'/>
+                        <input type='text' className='bg-buttonBack' onChange={(e)=>setNames(e.target.value)}/>
                     </div>
 
                     <div className='columns-2 flex gap-4'>
                         <label>Email</label>
-                        <input type='email' className='bg-buttonBack'/>
+                        <input type='email' className='bg-buttonBack' onChange={(e)=>setNames(e.target.value)}/>
                     </div>
 
                     <div className='columns-2 flex gap-4'>
                         <label>Room Type</label>
-                        <select id="roomT" name="rooms" className='bg-buttonBack'>
+                        <select id="roomT" name="rooms" className='bg-buttonBack' onChange={(e)=>setNames(e.target.value)}>
                             <option value="Standard" selected>Standard</option>
                             <option value="Deluxe">Deluxe</option>
                             <option value="suite" >Suite</option>
@@ -44,7 +69,7 @@ const Booking = () =>{
                         <div className='flex gap-4'>
                             <section>
                                 <span className="material-symbols-outlined bg-buttonBack ">people</span>
-                                <select id="adultNo" name="adults" className='bg-buttonBack'>
+                                <select id="adultNo" name="adults" className='bg-buttonBack' onChange={(e)=>setNames(e.target.value)}>
                                 <option disabled selected value="">Adults</option>
                                 <option value="one">1</option>
                                 <option value="two">2</option>
@@ -55,7 +80,7 @@ const Booking = () =>{
 
                             <section>
                                 <span className="material-symbols-outlined align-center bg-buttonBack">child_care</span>
-                                <select id="childNo" name="child" className='bg-buttonBack'>
+                                <select id="childNo" name="child" className='bg-buttonBack' onChange={(e)=>setNames(e.target.value)}>
                                 <option disabled selected value="">Child</option>
                                 <option value="one">1</option>
                                 <option value="two">2</option>
@@ -70,14 +95,14 @@ const Booking = () =>{
                     <div className='columns-2 flex gap-4'>
                         <label>Arrival Date & Time</label>
                         <div className='flex gap-4'>
-                            <input type="date" id="datepicker" name="datepicker" min="2023-01-01" max="2024-12-31" className='bg-buttonBack'/>
-                            <input type="time" id="timepicker" name="timepicker" min="09:00" max="18:00" className='bg-buttonBack'/>
+                            <input type="date" id="datepicker" name="datepicker" min="2023-01-01" max="2024-12-31" className='bg-buttonBack' onChange={(e)=>setNames(e.target.value)}/>
+                            <input type="time" id="timepicker" name="timepicker" min="09:00" max="18:00" className='bg-buttonBack' onChange={(e)=>setNames(e.target.value)}/>
                         </div>
                     </div>
 
                     <div className='columns-2 flex gap-4'>
                         <label>Depature Date</label>
-                        <input type="date" id="datepicker" name="datepicker" min="2023-01-01" max="2024-12-31" className='bg-buttonBack'/>
+                        <input type="date" id="datepicker" name="datepicker" min="2023-01-01" max="2024-12-31" className='bg-buttonBack' onChange={(e)=>setDepature(e.target.value)}/>
                     </div>
 
                     <div className='columns-2 flex gap-4'>
@@ -90,11 +115,11 @@ const Booking = () =>{
 
                     <div className='columns-2 flex gap-4'>
                         <label >Comments</label>
-                        <textarea type='password' rows="10" cols="30" className='bg-buttonBack'/>
+                        <textarea type='password' rows="10" cols="30" className='bg-buttonBack' onChange={(e)=>setComments(e.target.value)}/>
                     </div>
 
                     <div className="pl-36">
-                        <button onClick={handleClick} className='bg-vintageColor w-24 rounded-tl-2xl rounded-br-2xl text-tcolor drop-shadow-2xl '>Submit</button>    
+                        <button onClick={add} className='bg-vintageColor w-24 rounded-tl-2xl rounded-br-2xl text-tcolor drop-shadow-2xl '>Submit</button>    
                     </div>
                 </form>
             </div>

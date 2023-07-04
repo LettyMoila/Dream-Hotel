@@ -29,9 +29,8 @@ const AdminLogin = () =>{
                 <div>
                     <Link to="/AdminHome">forgot password?</Link>  
                 </div>
-                <Link to="/AdminHome">
+                
                 <button onClick={signIn} className="rounded-tl-2xl rounded-br-2xl bg-vintageColor drop-shadow-2xl w-24 text-tcolor">Login</button>
-                </Link>
             </div>
             <div className="h-full w-7/12 bg-[url('./assets/clientBacground.png')] bg-no-repeat bg-cover"></div>
         </div>

@@ -16,7 +16,7 @@ const LandingPage = () => {
           <h1 className='pl-4 text-8xl text-color1'>Oops!</h1>
           
             <div className='mt-52 ml-24 pl-4 text-6xl text-color1'>
-            <h3 className=''>You've landed at the right spot..</h3>
+            <h3 className=''>You've landed at the<br/> right spot..</h3>
           </div>
         </div>
         
