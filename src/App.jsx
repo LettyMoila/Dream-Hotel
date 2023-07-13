@@ -12,6 +12,7 @@ import Reserve from './pages/Reserve';
 import Requests from './pages/Requests';
 import Guests from './pages/Guests';
 import ManageRooms from './pages/ManageRooms';
+import ResetPass from './pages/ResetPass';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
        <Route path="/Requests" element={<Requests />} />
        <Route path="/Guests" element={<Guests />} />
        <Route path="/ManageRooms" element={<ManageRooms />} />
+       <Route path="/ResetPass" element={<ResetPass />} />
     </Routes>
    
   );

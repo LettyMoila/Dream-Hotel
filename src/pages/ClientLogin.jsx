@@ -13,10 +13,12 @@ const ClientLogin = () =>{
     const [email, setEmail] = useState('');
     const [pass, setPassword] = useState('');
 
-    signInWithEmailAndPassword(auth, email, pass).then(()=>{
-        nav('/Explore');
-    }).catch((error)=>{
-        alert(error.message)
+    const signIn = (()=>{
+        signInWithEmailAndPassword(auth, email, pass).then(()=>{
+            nav('/Explore');
+        }).catch((error)=>{
+            alert(error.message)
+        })
     })
 
     return(
@@ -38,11 +40,9 @@ const ClientLogin = () =>{
                 </div>
 
                 <div className=''>
-                    <button className='text-tcolor bg-buttonBack rounded-tl-2xl rounded-br-2xl drop-shadow-2xl h-8 w-40'>Login</button>
-                    <div className='columns-2'>
-                        <h3>Don't have an account?</h3>
-                        <Link to="/Register" className='text-tcolor'>Sign up</Link>
-                    </div>
+                    <button onClick={signIn} className='text-tcolor bg-buttonBack rounded-tl-2xl rounded-br-2xl drop-shadow-2xl h-8 w-40'>Login</button>
+                    <br></br>
+                    <Link to='/ResetPass'>forgot password</Link>
                 </div>
 
                 <div className=''>
@@ -52,6 +52,11 @@ const ClientLogin = () =>{
                     <li><img src={facebook}/></li>
                     <li><img src={apple}/></li>
                    </ul>
+                </div>
+
+                <div className='columns-2'>
+                        <h3>Don't have an account?</h3>
+                        <Link to="/Register" className='text-tcolor'>Sign up</Link>
                 </div>
             </div>
         </div>

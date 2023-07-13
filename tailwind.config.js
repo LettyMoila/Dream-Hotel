@@ -13,6 +13,7 @@ export default {
       'colorPink': '#DC3CDF',
       'tcolor': '#A5A6F6',
       'deep-blue':'#49C9E5',
+      'sales-color': '#f97316',
     },
     extend: {},
   plugins: [],

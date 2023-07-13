@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import 'reactjs-popup/dist/index.css';
 
 import { db } from '../config/firebase';
@@ -10,7 +9,8 @@ const Booking = () =>{
     const [fullname, setNames] = useState('');
     const [email, setEmail] = useState('');
     const [roomType, setRoomType] = useState('');
-    const [numGuests, setNum] = useState('');
+    const [numAdult, setAdult] = useState('');
+    const [numChild, setChild] = useState('');
     const [arrival, setArrival] = useState('');
     const [depature, setDepature] = useState('');
     const [pickup, setPickup] = useState('');
@@ -19,11 +19,12 @@ const Booking = () =>{
     const add = (async()=>{
         try{
 
-                const docRef = await addDoc(collection(db, 'booking'),{
+            const docRef = await addDoc(collection(db, 'booking'),{
                 fullname: fullname,
                 email: email,
                 roomType: roomType,
-                numGuests: numGuests,
+                numAdult: numAdult,
+                numChild: numChild,
                 arrival: arrival,
                 depature: depature,
                 pickup: pickup,
@@ -39,7 +40,6 @@ const Booking = () =>{
         <div className="h-screen flex">
             <div className="h-full w-1/2 bg-vintageColor p-8">
                 <div className="h-24 pl-60 text-2xl">
-                    <Link to=""></Link>
                     <h1>Book A Room</h1>
                 </div>
 
@@ -51,12 +51,12 @@ const Booking = () =>{
 
                     <div className='columns-2 flex gap-4'>
                         <label>Email</label>
-                        <input type='email' className='bg-buttonBack' onChange={(e)=>setNames(e.target.value)}/>
+                        <input type='email' className='bg-buttonBack' onChange={(e)=>setEmail(e.target.value)}/>
                     </div>
 
                     <div className='columns-2 flex gap-4'>
                         <label>Room Type</label>
-                        <select id="roomT" name="rooms" className='bg-buttonBack' onChange={(e)=>setNames(e.target.value)}>
+                        <select id="roomT" name="rooms" className='bg-buttonBack' onChange={(e)=>setRoomType(e.target.value)}>
                             <option value="Standard" selected>Standard</option>
                             <option value="Deluxe">Deluxe</option>
                             <option value="suite" >Suite</option>
@@ -69,7 +69,7 @@ const Booking = () =>{
                         <div className='flex gap-4'>
                             <section>
                                 <span className="material-symbols-outlined bg-buttonBack ">people</span>
-                                <select id="adultNo" name="adults" className='bg-buttonBack' onChange={(e)=>setNames(e.target.value)}>
+                                <select id="adultNo" name="adults" className='bg-buttonBack' onChange={(e)=>setAdult(e.target.value)}>
                                 <option disabled selected value="">Adults</option>
                                 <option value="one">1</option>
                                 <option value="two">2</option>
@@ -80,7 +80,9 @@ const Booking = () =>{
 
                             <section>
                                 <span className="material-symbols-outlined align-center bg-buttonBack">child_care</span>
-                                <select id="childNo" name="child" className='bg-buttonBack' onChange={(e)=>setNames(e.target.value)}>
+
+                                
+                                <select id="childNo" name="child" className='bg-buttonBack' onChange={(e)=>setChild(e.target.value)}>
                                 <option disabled selected value="">Child</option>
                                 <option value="one">1</option>
                                 <option value="two">2</option>
@@ -95,7 +97,7 @@ const Booking = () =>{
                     <div className='columns-2 flex gap-4'>
                         <label>Arrival Date & Time</label>
                         <div className='flex gap-4'>
-                            <input type="date" id="datepicker" name="datepicker" min="2023-01-01" max="2024-12-31" className='bg-buttonBack' onChange={(e)=>setNames(e.target.value)}/>
+                            <input type="date" id="datepicker" name="datepicker" min="2023-01-01" max="2024-12-31" className='bg-buttonBack' onChange={(e)=>setArrival(e.target.value)}/>
                             <input type="time" id="timepicker" name="timepicker" min="09:00" max="18:00" className='bg-buttonBack' onChange={(e)=>setNames(e.target.value)}/>
                         </div>
                     </div>
@@ -108,8 +110,8 @@ const Booking = () =>{
                     <div className='columns-2 flex gap-4'>
                         <label>Free Pickup?</label>
                         <span>
-                            <input type='radio' className='bg-buttonBack' /><label>Yes, please!</label>
-                            <input type='radio' className='bg-buttonBack'/><label>No, Thanks</label>
+                            <input type='radio' id='yes' value='yes' name='pickup' className='bg-buttonBack' /><label>Yes, please!</label>
+                            <input type='radio' id='no' value='no' name='pickup' className='bg-buttonBack'/><label>No, Thanks</label>
                         </span>   
                     </div>
 

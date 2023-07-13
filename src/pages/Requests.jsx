@@ -4,6 +4,8 @@ import Tick from '../assets/Tick Box.png'
 import Cancel from '../assets/Cancel.png'
 import { Link } from 'react-router-dom'
 
+import { addDoc, collection, getDocs } from 'firebase/firestore';
+
 const Requests = () => {
     const add = (()=>{})
 
