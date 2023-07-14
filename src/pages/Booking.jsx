@@ -110,8 +110,8 @@ const Booking = () =>{
                     <div className='columns-2 flex gap-4'>
                         <label>Free Pickup?</label>
                         <span>
-                            <input type='radio' id='yes' value='yes' name='pickup' className='bg-buttonBack' /><label>Yes, please!</label>
-                            <input type='radio' id='no' value='no' name='pickup' className='bg-buttonBack'/><label>No, Thanks</label>
+                            <input type='radio' id='yes' value='yes' name='pickup' className='bg-buttonBack' onChange={(e)=>setPickup(e.target.value)}/><label>Yes, please!</label>
+                            <input type='radio' id='no' value='no' name='pickup' className='bg-buttonBack' onChange={(e)=>setPickup(e.target.value)}/><label>No, Thanks</label>
                         </span>   
                     </div>
 

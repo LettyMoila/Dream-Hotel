@@ -1,50 +1,58 @@
-import Wait from '../assets/Wait.png'
-import View from '../assets/View.png'
-import Tick from '../assets/Tick Box.png'
-import Cancel from '../assets/Cancel.png'
-import { Link } from 'react-router-dom'
-
 import { addDoc, collection, getDocs } from 'firebase/firestore';
+import { db } from '../config/firebase'
+import { useEffect, useState } from 'react'
+import { data } from 'autoprefixer'
+import TopBar from '../layouts/TopBar'
 
 const Requests = () => {
-    const add = (()=>{})
+    const [bookings, setBookings] = useState([])
 
+    const add = async(fullname,email,roomType,numAdult,numChild,arrival,depature,pickup,comments) => {
+        setBookings((bookings) => [
+            ...bookings,
+            {
+                fullname: fullname,
+                email: email,
+                roomType: roomType,
+                numAdult: numAdult,
+                numChild: numChild,
+                arrival: arrival,
+                depature: depature,
+                pickup: pickup,
+                comments: comments,
+            },
+        ]);
+    };
+
+    const retrieve = (async()=>{
+        try{
+            const querySnapShot = await getDocs(collection(db, "booking"));
+
+            const data = querySnapShot.docs.map((doc) => ({
+                id:doc.id,
+                ...doc.data()
+            }))
+
+            setBookings(data);
+            
+        }catch(error){
+            
+        } 
+       })
+
+    useEffect(()=> {
+        retrieve()
+    }, [])
 
     return(
         <div className="h-screen">
-            <section className="h-1/6 bg-buttonBack flex justify-between">
-                <div>
-                <span className="material-symbols-outlined justify-middle">menu</span>
-                </div>
-                <div className='flex gap-8 list-none'>
-                    <li className=''>
-                        <img src={Wait} />
-                        <label className='flex align-middle'>pending</label>
-                    </li>
-                    <li>
-                    <img src={Tick}/>
-                    <label>Approved</label>
-                    </li>
-                    <li>
-                    <img src={Cancel}/>
-                    <label>Canceled</label>
-                    </li>
-                    <li>
-                    <img src={View}/>
-                    <label>View history</label>
-                    </li>
-                </div>
-                <div>
-                    <Link to="/AdminLogin">
-                    <span className="material-symbols-outlined">logout</span>
-                    </Link>
-                </div>
-            </section>
+            <TopBar />
             <section className="h-5/6 bg-vintageColor flex justify-center items-center">
+            
                 <div className='h-40 w-40'>
                     <ol>
                         <li>
-                            <button>Accept</button>
+                            <button className='bg-vintageColor w-24 rounded-tl-2xl rounded-br-2xl text-tcolor drop-shadow-2xl '>Accept</button>
                         </li>
                     </ol>
                 </div>
